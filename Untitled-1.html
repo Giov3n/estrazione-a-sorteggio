@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrazione a Sorteggio</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #winner {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        #draw-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="draw-button">Estrai il Vincitore</button>
+        <div id="winner"></div>
+    </div>
+    <script>
+        const participants = [
+            'Persona 1',
+            'Persona 2',
+            'Persona 3',
+            'Persona 4', // Indice 3
+            'Persona 5',
+            'Persona 6',
+            'Persona 7',
+            'Persona 8'
+        ];
+
+        const favoredIndex = 3; // Indice del partecipante favorito
+
+        document.getElementById('draw-button').addEventListener('click', function() {
+            let index;
+            // Probabilità di favorire il partecipante specificato
+            if (Math.random() < 0.5) { // 50% di probabilità di favorire
+                index = favoredIndex;
+            } else {
+                index = Math.floor(Math.random() * participants.length);
+            }
+            document.getElementById('winner').innerText = `Vincitore: ${participants[index]}`;
+        });
+    </script>
+</body>
+</html>
